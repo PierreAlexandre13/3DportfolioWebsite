@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>3D Sphere Example</title>
+    <style>
+        body { margin: 0; }
+        .label {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            color: white;
+            font-size: 30px;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            transition: opacity 1s; /* Transition for opacity property */
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+        }
+        
+        #overlay.close {
+            animation: transitionOut 1s forwards;
+        }
+
+        @keyframes transitionOut {
+            from {
+                opacity: 1;
+                visibility: visible;
+            }
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        #overlay.open {
+            display: flex;
+            animation: transitionIn 1s forwards;
+        }
+
+        @keyframes transitionIn {
+            from {
+                opacity: 0;
+                visibility: hidden;
+            }
+            to {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    </style>
+    <script type="importmap">
+        {
+            "imports":{
+                "/node_modules/three/examples/jsm/loaders/OBJLoader":"./node_modules/three/examples/jsm/loaders/OBJLoader.js",
+                "three": "./node_modules/three/build/three.module.js",
+				"three/addons/": "./node_modules/three/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script>
+        function closeOverlay() {
+            document.getElementById('overlay').classList.remove('open');
+            document.getElementById('overlay').classList.add('close');
+        }
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+    <!-- <script type="module" src="main.js"></script> -->
+
+    <div id="overlay">
+        <!-- Close button -->
+        <button onclick="closeOverlay()">Close</button>
+        <!-- Embedded webpage (replace the URL) -->
+        <h1>PAGE PAR DESSUS (normalement)</h1>
+    </div>
+
+    <script type="module" src="./main2.js"></script>
+</body>
+</html>
